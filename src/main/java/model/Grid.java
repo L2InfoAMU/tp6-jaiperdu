@@ -93,20 +93,22 @@ public class Grid implements Iterable<Cell> {
     // TODO: pas sûr que ce soit correct...
     private List<Cell> getNeighbours(int rowIndex, int columnIndex) {
         ArrayList aroundCell = new ArrayList(){{
-        add(getCell(rowIndex-1, columnIndex-1));
-        add(getCell(rowIndex-1, columnIndex));
-        add(getCell(rowIndex-1, columnIndex+1));
-        add(getCell(rowIndex, columnIndex-1));
-        add(getCell(rowIndex, columnIndex+1));
-        add(getCell(rowIndex+1, columnIndex-1));
-        add(getCell(rowIndex+1, columnIndex));
-        add(getCell(rowIndex+1, columnIndex+1));
+            for(int i = rowIndex-1; i < rowIndex+1; i++){
+                for(int j = columnIndex-1; j < columnIndex+1; j++){
+                    if(cells[i][j] != cells [rowIndex][columnIndex]){
+                        add(getCell( i, j ));
+                    }
+                }
+            }
         }};
         return aroundCell;
     }
 
     // TODO: Écrire une version correcte de cette méthode.
     private int countAliveNeighbours(int rowIndex, int columnIndex) {
+
+        //if(cells[rowIndex][columnIndex].isAlive() == true) (utilisé ceci)
+
         return 0;
     }
 
